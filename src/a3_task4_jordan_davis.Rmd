@@ -1,0 +1,101 @@
+---
+title: "a3_task4_jordan_davis"
+author: "Jordan Marisa Davis"
+date: "10/31/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(janitor)
+library(here)
+library(lubridate)
+```
+
+## Read in data and clean it up
+
+The "urchins.csv" file was read into R using the "here" package. The data was cleaned using the janitor package so text appears in lower_snake_case.  
+
+```{r}
+urchins_clean <- read.csv(here("data", "urchins.csv")) %>% 
+  clean_names()
+```
+
+## Initial wrangling 
+
+Here I wrangle the urchins data to include only observations from Naples Reef for purple urchins in January 2010. 
+
+```{r}
+urchins_date_class <- urchins_clean %>% 
+  mutate(date = mdy(date))
+
+class(urchins_clean$date)
+
+jan_2010_purple_urchins <- urchins_date_class %>% 
+  filter(common_name %in% c("Purple Urchin")) %>% 
+  mutate(Date = ymd(date)) %>% 
+  mutate(Month = month(date)) %>% 
+  mutate(Year = year(Date)) %>% 
+  filter(Month == 01, Year == 2010, site == "NAPL")
+```
+
+## Exploratory data visualization 
+
+###Exploratory histograms:
+```{r}
+ggplot(data = jan_2010_purple_urchins, aes(x = size)) +
+  geom_histogram()+
+  facet_wrap(~treatment)
+```
+
+### Quantile-quantile
+```{r}
+ggplot(data = jan_2010_purple_urchins, aes(sample = size))+
+  geom_qq()+
+  facet_wrap(~treatment)
+```
+### Summary of exploratory graphs
+
+## Descriptive statictics 
+
+A summary table was created to explore the mean, median, standard deviation, and sample size of the purple urchins in NAPL in January 2010 comparing the annual treatment to the control treatment in order to better understand if giant kelp removal affected purple urchins at this site.  
+
+```{r}
+purp_urch_stats_jan_2010 <- jan_2010_purple_urchins %>% 
+  group_by(treatment) %>% 
+  summarize(mean_t = mean(size),
+            sd_t = sd(size),
+            n = n())
+purp_urch_stats_jan_2010
+```
+
+### 2-sample t-test
+
+Create vectors containing observations for each sample. 
+
+```{r}
+control_sample <-jan_2010_purple_urchins %>% 
+  filter(treatment == "ANNUAL") %>% 
+  pull(size)
+
+annual_sample <- jan_2010_purple_urchins %>% 
+  filter(treatment == "CONTROL") %>% 
+  pull(size)
+
+t.test(x = control_sample, annual_sample)
+```
+
+### Summary of two-sample t-test findings 
+
+
+
+
+
+
+
+
+
+
+
+
