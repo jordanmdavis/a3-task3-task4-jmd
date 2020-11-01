@@ -413,7 +413,12 @@ summary {
 </div>
 <div id="section-1-summary" class="section level3">
 <h3>Section 1: Summary</h3>
-<p>The mean and median calculated in the summary table suggest that the purple urchin is smaller in size. It should be noted that the sample size of the purple urchins was about 4000 greater than the red urchins.</p>
+<p>The mean and median calculated in the summary table suggest that the purple urchin is smaller in size. The mean of the purple urchins was about 2.31 cm smaller than the red urchin; however, it should be noted that the sample size (n) of the purple urchins was about 4000 greater than the red urchins. Taking sample size into account, the actual percent differne is 0.011 percent.</p>
+<pre class="r"><code>red_urch_diff = 6.776489/27408
+purpl_urch_diff = 4.469797/31805
+red_purp_diff = (red_urch_diff - purpl_urch_diff) * 100
+red_purp_diff</code></pre>
+<pre><code>## [1] 0.01067074</code></pre>
 </div>
 </div>
 <div id="section-2" class="section level2">

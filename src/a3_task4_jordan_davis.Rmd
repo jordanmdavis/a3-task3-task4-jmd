@@ -6,7 +6,7 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
 library(janitor)
 library(here)
@@ -55,11 +55,12 @@ ggplot(data = jan_2010_purple_urchins, aes(sample = size))+
   geom_qq()+
   facet_wrap(~treatment)
 ```
+
 ### Summary of exploratory graphs
 
-write 1 - 2 sentences describing your main takeaways about the distribution of urchin sizes for each group.
+The q-q-shows that both the annual and control are fairly linear and therefore are normally distributed. The histogram details a few sizes where annual and control differ; for example there are more 4.5,5,5.5 cm urchins in the control as demonstrated from the histogram.  
 
-## Descriptive statictics 
+### Descriptive statictics 
 
 A summary table was created to explore the mean, median, standard deviation, and sample size of the purple urchins in NAPL in January 2010 comparing the annual treatment to the control treatment in order to better understand if giant kelp removal affected purple urchins at this site.  
 
@@ -90,6 +91,7 @@ t.test(x = control_sample, annual_sample)
 
 ### Summary of two-sample t-test findings 
 
+The sample means for the control sample and annual sample (3.92 and 3.73, respectively) are not that different so it is likely they were drawn from populations with the same mean. The p value is 0.2536 which also gives evidence that these are from populations from the same mean, because p values get smaller when population are more different, and this p value is above our selected significance level. This p value means we can accept our null hypothesis.  
 
 
 

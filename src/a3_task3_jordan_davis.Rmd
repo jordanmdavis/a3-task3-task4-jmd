@@ -94,6 +94,7 @@ purple_urchins <- urchins_date %>%
 ### Summary 
 
 Here I summarize the purple urchins data to calculate a count of each site by year. 
+
 ```{r}
 p_urchins_sum <- purple_urchins%>% 
  group_by(site_full, Year) %>% 
