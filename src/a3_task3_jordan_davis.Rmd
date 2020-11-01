@@ -57,7 +57,14 @@ urchin_stats
 
 ### Section 1: Summary 
 
-The mean and median calculated in the summary table suggest that the purple urchin is smaller in size. It should be noted that the sample size of the purple urchins was about 4000 greater than the red urchins. 
+The mean and median calculated in the summary table suggest that the purple urchin is smaller in size. The mean of the purple urchins was about 2.31 cm smaller than the red urchin; however, it should be noted that the sample size (n) of the purple urchins was about 4000 greater than the red urchins. Taking sample size into account, the actual percent differne is 0.011 percent.  
+
+```{r}
+red_urch_diff = 6.776489/27408
+purpl_urch_diff = 4.469797/31805
+red_purp_diff = (red_urch_diff - purpl_urch_diff) * 100
+red_purp_diff
+```
 
 ## Section 2 
 

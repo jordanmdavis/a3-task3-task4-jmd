@@ -57,6 +57,8 @@ ggplot(data = jan_2010_purple_urchins, aes(sample = size))+
 ```
 ### Summary of exploratory graphs
 
+write 1 - 2 sentences describing your main takeaways about the distribution of urchin sizes for each group.
+
 ## Descriptive statictics 
 
 A summary table was created to explore the mean, median, standard deviation, and sample size of the purple urchins in NAPL in January 2010 comparing the annual treatment to the control treatment in order to better understand if giant kelp removal affected purple urchins at this site.  
